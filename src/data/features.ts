@@ -1,45 +1,45 @@
 export const features = [
   {
     icon: "🚛",
-    title: "Collections that fit your schedule",
+    title: "جامعون موثوقون وراحة بال حقيقية",
     description:
-      "Pick a plan and frequency — once a week, twice a week or once a month — and we handle the rest.",
+      "كل جامع يجتاز التحقق من الهوية وتطابق الوجه ومراجعة الإدارة قبل أول عملية جمع.",
     featured: true,
     span: "lg:col-span-4", // ياخد 4 من 6 أعمدة
   },
   {
     icon: "👤",
-    title: "User dashboard",
+    title: "لوحة تحكم المستخدم",
     description:
-      "Manage your subscription, frequency and saved location from one personalized dashboard.",
+      "تحكّم في اشتراكك، واضبط تفضيلاتك، واحفظ موقعك للوصول إلى تجربة مخصصة تناسبك",
     span: "lg:col-span-2",
   },
   {
     icon: "👷",
-    title: "Collector dashboard",
+    title: "جمع نفايات المكاتب والمقرات",
     description:
-      "Apply for jobs, upload your documents and track your application status in real time.",
+      "مسارات جمع مرنة للمتاجر والمطاعم والمستودعات بنقاط استلام داخلية.",
     span: "lg:col-span-2",
   },
   {
     icon: "🗺️",
-    title: "Interactive map",
+    title: "تحديد الموقع على الخريطه",
     description:
-      "Choose your pickup address directly on the map and save it to your profile.",
+      "ثبّت عنوانك بالضبط على خريطة تفاعلية واحفظه في ملفك الشخصي.",
     span: "lg:col-span-4",
   },
   {
     icon: "✅",
-    title: "Admin review",
+    title: "مراجعة الطلبات من قِبل الإدارة",
     description:
-      "Every application and service request is reviewed before it's approved and processed.",
+      "تخضع جميع طلبات التقديم وطلبات الخدمة للمراجعة من قِبل الإدارة قبل الموافقة عليها والبدء في تنفيذها.",
     span: "lg:col-span-3",
   },
   {
     icon: "📅",
-    title: "Flexible packages",
+    title: "إشتراكات مرنة",
     description:
-      "3, 6 or 12 months, with pricing calculated from your duration and frequency.",
+      "إختر 3 أو 6 أو 12 شهراً وادفع فقط مقابل الوتيرة التي تحتاجها.",
     span: "lg:col-span-3",
   },
 ];

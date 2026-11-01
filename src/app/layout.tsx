@@ -3,12 +3,20 @@ import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-jakarta",
-  weight: ["600", "700", "800"],
+// const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+// const jakarta = Plus_Jakarta_Sans({
+//   subsets: ["latin"],
+//   variable: "--font-jakarta",
+//   weight: ["600", "700", "800"],
+// });
+import { Cairo } from "next/font/google";
+
+const cairo = Cairo({
+  subsets: ["arabic"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-cairo",
 });
+
 
 export const metadata: Metadata = {
   title: "EcoTrack – Smart Waste Management",
@@ -18,7 +26,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${jakarta.variable} font-sans antialiased text-slate-900`}>
+      <body className={`${cairo.variable} ${cairo.className} font-sans antialiased text-slate-900`}>
         <Navbar />
         <main>{children}</main>
       </body>
