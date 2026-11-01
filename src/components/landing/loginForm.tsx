@@ -33,14 +33,15 @@ export default function LoginForm() {
     <section
       id="login"
       dir="rtl"
-      className="bg-gradient-to-br   py-24"
+      className="bg-gradient-to-br h-full pt-24"
     >
       <Image
         src="/images/login-image.png" // المسار بيبدأ من فولدر public
         alt="Collector and customer using the EcoTrack app" // وصف للصورة (مهم لقارئات الشاشة)
-        fill // الصورة تملا الحاوية كلها
+        fill
+         // الصورة تملا الحاوية كلها
         priority // حمّلها فورًا لأنها أول حاجة بتظهر
-        className="-z-20 object-cover object-right"
+        className="-z-20 object-cover h-full object-right"
         // -z-20: تروح ورا كل حاجة
         // object-cover: تملا المساحة من غير ما تتشوه
         // object-right: تثبّت الجزء اليمين من الصورة

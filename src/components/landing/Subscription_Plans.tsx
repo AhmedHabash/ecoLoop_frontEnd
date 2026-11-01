@@ -8,6 +8,7 @@ export default function Subscription() {
   return (
     <section
       dir="rtl"
+      id="subscription"
       className="min-h-screen bg-[#f5f8fc] px-5 py-10 text-[#071a35] md:px-10"
     >
       {/* Header */}
