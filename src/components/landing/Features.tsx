@@ -4,12 +4,12 @@ import { features } from "@/data/features";
 
 export default function Features() {
   return (
-    <section id="services" className="bg-white py-24">
+    <section dir="rtl" id="services" className="bg-white py-24">
       {/* id="services": لينك Services في الـ Navbar ينزل هنا */}
-      <div className="mx-auto max-w-[1360px] px-6">
+      <div className="mx-auto max-w-[1200px] px-6">
         <SectionTitle
-          title="One platform, two clear journeys"
-          subtitle="Whether you need pickups or work, your dashboard has everything."
+          title="منصة واحدة لطرفي الجميع"
+          subtitle="مصممة للشركات والمكاتب والمتاجر، وللجامعين المستقلين على حد سواء."
         />
 
         <div className="mt-14 grid gap-7 lg:grid-cols-6">

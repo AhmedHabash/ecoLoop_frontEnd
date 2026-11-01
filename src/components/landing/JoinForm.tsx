@@ -8,17 +8,18 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Phone } from "lucide-react";
 import Input from "@/components/ui/Input";
 import Select from "@/components/ui/Select";
+import Link from "next/link";
 
 const roles = [
-  { value: "user", label: "User (Company)" },
-  { value: "collector", label: "Collector" },
+  { value: "user", label: "الشركة/المستخدم" },
+  { value: "collector", label: "الجامع" },
 ];
 
 const locations = [
-  { value: "cairo", label: "Cairo" },
-  { value: "giza", label: "Giza" },
-  { value: "alexandria", label: "Alexandria" },
-  { value: "sharqia", label: "Sharqia" },
+  { value: "cairo", label: "القاهرة" },
+  { value: "giza", label: "الجيزة" },
+  { value: "alexandria", label: "الإسكندرية" },
+  { value: "sharqia", label: "الشرقية" },
 ];
 // مؤقتًا: غيّر المدن دي لأي قايمة تحتاجها
 
@@ -55,6 +56,7 @@ export default function JoinForm() {
   return (
     <section
       id="register"
+      dir="rtl"
       className="bg-gradient-to-br from-emerald-500 to-emerald-800 py-24"
     >
       {/* id="register": لو حبيت تعمل لينك ينزل للسكشن ده */}
@@ -66,11 +68,10 @@ export default function JoinForm() {
           <div className="mb-6 h-1 w-16 rounded bg-white/70" />
           {/* الشرطة الخضرا/البيضا اللي فوق العنوان */}
           <h2 className="font-[family-name:var(--font-jakarta)] text-5xl font-extrabold tracking-tight">
-            Join EcoTrack
+            انضم إلينا
           </h2>
           <p className="mt-6 max-w-md text-xl leading-relaxed text-white/90">
-            Tell us who you are and we&apos;ll send you to the right
-            registration flow.
+            اختر نوع حسابك، وسنوجّهك إلى خطوات التسجيل المناسبة لك.
             {/* &apos; هي علامة ' (React مش بيحب نكتبها مباشرة داخل النص) */}
           </p>
           <a
@@ -81,8 +82,8 @@ export default function JoinForm() {
             (415) 555-0134
           </a>
           <p className="mt-4 text-white/80">
-            After registration you&apos;ll complete your profile in your
-            dashboard.
+            بعد إتمام التسجيل، يمكنك استكمال بيانات ملفك الشخصي من خلال لوحة
+            التحكم الخاصة بك.
           </p>
         </div>
 
@@ -94,8 +95,8 @@ export default function JoinForm() {
         >
           <Select
             id="role"
-            label="I am a"
-            placeholder="Select your role"
+            label="أنا أكون"
+            placeholder="اختر دورك"
             options={roles}
             value={role}
             onChange={(e) => setRole(e.target.value)}
@@ -103,7 +104,7 @@ export default function JoinForm() {
           />
           <Input
             id="name"
-            label="Company name / Full name"
+            label="اسم الشركة"
             placeholder="Green Valley Apartments"
             value={form.name}
             onChange={(e) => update("name", e.target.value)}
@@ -112,7 +113,7 @@ export default function JoinForm() {
           <Select
             id="location"
             label="Location"
-            placeholder="Select your location"
+            placeholder="اختر موقعك"
             options={locations}
             value={form.location}
             onChange={(e) => update("location", e.target.value)}
@@ -121,7 +122,7 @@ export default function JoinForm() {
           <Input
             id="email"
             type="email"
-            label="Email address"
+            label="ادخل الايميل"
             placeholder="you@example.com"
             value={form.email}
             onChange={(e) => update("email", e.target.value)}
@@ -130,7 +131,7 @@ export default function JoinForm() {
           <Input
             id="phone"
             type="tel"
-            label="Phone number"
+            label="رقم الهاتف"
             placeholder="(415) 555-0134"
             value={form.phone}
             onChange={(e) => update("phone", e.target.value)}
@@ -140,11 +141,19 @@ export default function JoinForm() {
             type="submit"
             className="h-14 w-full rounded-xl bg-emerald-600 text-lg font-semibold text-white transition-colors hover:bg-emerald-700"
           >
-            Register
+            إنشاء حساب
           </button>
+          <p className="text-center text-xs">
+            لدي حساب بالفعل{" "}
+            <Link
+              href="/login"
+              className="mx-1.5 font-semibold text-emerald-800 hover:text-emerald-600"
+            >
+              تسجيل دخول
+            </Link>
+          </p>
         </form>
       </div>
     </section>
   );
 }
-  
