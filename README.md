@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EcoTrack – Smart Waste Management
 
-## Getting Started
+Landing page and registration flow for EcoTrack, a platform where companies book waste-collection subscriptions and collectors apply for collection jobs.
 
-First, run the development server:
+## Features
+
+- Landing page: hero, join form, features and subscription packages
+- Two registration flows: **User** (company representative) and **Collector**
+- Separate dashboards for User, Collector and Admin (in progress)
+
+## Tech stack
+
+- [Next.js](https://nextjs.org/) (App Router) + TypeScript
+- [Tailwind CSS](https://tailwindcss.com/) v4
+- [lucide-react](https://lucide.dev/) icons
+
+## Getting started
 
 ```bash
+# 1. Clone the repo
+git clone https://github.com/USERNAME/REPO.git
+cd REPO
+
+# 2. Install dependencies
+npm install
+
+# 3. Run the dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/                 # Routes (landing, register, login, dashboards)
+│   ├── register/
+│   ├── login/
+│   ├── user/            # complete-profile, dashboard
+│   ├── collector/       # complete-profile, dashboard
+│   └── admin/           # dashboard
+├── components/
+│   ├── layout/          # Navbar, Footer
+│   ├── landing/         # Hero, JoinForm, Features, HowItWorks, Packages
+│   └── ui/              # Button, Input, Select, SectionTitle, FeatureCard
+├── data/                # Static content (features, steps, packages)
+├── lib/                 # Helpers
+└── types/               # Shared TypeScript types
+public/images/           # Images used in the landing page
+```
 
-## Learn More
+## User flows
 
-To learn more about Next.js, take a look at the following resources:
+1. **User:** register → complete profile (package, frequency, map location) → dashboard
+2. **Collector:** register → complete profile (photo, ID, face verification) → wait for admin review → dashboard
+3. **Admin:** reviews collector applications and service requests
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Command         | Description              |
+| --------------- | ------------------------ |
+| `npm run dev`   | Start the dev server     |
+| `npm run build` | Create a production build |
+| `npm run start` | Run the production build |
+| `npm run lint`  | Run ESLint               |
 
-## Deploy on Vercel
+## Status
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+In development: landing page sections are being built one by one.
