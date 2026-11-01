@@ -1,0 +1,150 @@
+"use client";
+// لازم السطر ده لأن الكومبوننت بيستخدم state وأحداث (حاجات بتشتغل في المتصفح)
+
+import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+// useRouter: عشان ننقل المستخدم لصفحة تانية بعد التسجيل
+// useSearchParams: عشان نقرأ ?role=user من الرابط
+import { Phone } from "lucide-react";
+import Input from "@/components/ui/Input";
+import Select from "@/components/ui/Select";
+
+const roles = [
+  { value: "user", label: "User (Company)" },
+  { value: "collector", label: "Collector" },
+];
+
+const locations = [
+  { value: "cairo", label: "Cairo" },
+  { value: "giza", label: "Giza" },
+  { value: "alexandria", label: "Alexandria" },
+  { value: "sharqia", label: "Sharqia" },
+];
+// مؤقتًا: غيّر المدن دي لأي قايمة تحتاجها
+
+export default function JoinForm() {
+  const router = useRouter();
+  const params = useSearchParams();
+
+  const [role, setRole] = useState(params.get("role") ?? "");
+  // الدور المختار. لو الرابط فيه ?role=collector بيبدأ بيه، وإلا فاضي
+  const [form, setForm] = useState({
+    name: "",
+    location: "",
+    email: "",
+    phone: "",
+  });
+  // كل بيانات الفورم في object واحد
+
+  function update(field: string, value: string) {
+    setForm((prev) => ({ ...prev, [field]: value }));
+    // ننسخ القيم القديمة ونغيّر الحقل المطلوب بس
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault(); // نمنع المتصفح من عمل reload للصفحة
+    if (!role) return; // لو مختارش دور منكملش
+    // لسه مفيش backend، فمؤقتًا بننقل المستخدم لصفحة تكميل البيانات حسب دوره
+    router.push(
+      role === "collector"
+        ? "/collector/complete-profile"
+        : "/user/complete-profile",
+    );
+  }
+
+  return (
+    <section
+      id="register"
+      className="bg-gradient-to-br from-emerald-500 to-emerald-800 py-24"
+    >
+      {/* id="register": لو حبيت تعمل لينك ينزل للسكشن ده */}
+      <div className="mx-auto grid max-w-[1360px] items-center gap-12 px-6 lg:grid-cols-2">
+        {/* grid lg:grid-cols-2: عمودين في الشاشات الكبيرة، وعمود واحد في الموبايل */}
+
+        {/* الجزء الشمال: الكلام */}
+        <div className="text-white">
+          <div className="mb-6 h-1 w-16 rounded bg-white/70" />
+          {/* الشرطة الخضرا/البيضا اللي فوق العنوان */}
+          <h2 className="font-[family-name:var(--font-jakarta)] text-5xl font-extrabold tracking-tight">
+            Join EcoTrack
+          </h2>
+          <p className="mt-6 max-w-md text-xl leading-relaxed text-white/90">
+            Tell us who you are and we&apos;ll send you to the right
+            registration flow.
+            {/* &apos; هي علامة ' (React مش بيحب نكتبها مباشرة داخل النص) */}
+          </p>
+          <a
+            href="tel:+14155550134"
+            className="mt-10 inline-flex items-center gap-3 rounded-xl bg-white px-8 py-4 text-2xl font-semibold text-emerald-600"
+          >
+            <Phone className="h-6 w-6" />
+            (415) 555-0134
+          </a>
+          <p className="mt-4 text-white/80">
+            After registration you&apos;ll complete your profile in your
+            dashboard.
+          </p>
+        </div>
+
+        {/* الجزء اليمين: كارت الفورم */}
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-5 rounded-3xl bg-white p-8 shadow-xl"
+          // space-y-5: مسافة رأسية بين كل حقل والتاني
+        >
+          <Select
+            id="role"
+            label="I am a"
+            placeholder="Select your role"
+            options={roles}
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            required
+          />
+          <Input
+            id="name"
+            label="Company name / Full name"
+            placeholder="Green Valley Apartments"
+            value={form.name}
+            onChange={(e) => update("name", e.target.value)}
+            required
+          />
+          <Select
+            id="location"
+            label="Location"
+            placeholder="Select your location"
+            options={locations}
+            value={form.location}
+            onChange={(e) => update("location", e.target.value)}
+            required
+          />
+          <Input
+            id="email"
+            type="email"
+            label="Email address"
+            placeholder="you@example.com"
+            value={form.email}
+            onChange={(e) => update("email", e.target.value)}
+            required
+          />
+          <Input
+            id="phone"
+            type="tel"
+            label="Phone number"
+            placeholder="(415) 555-0134"
+            value={form.phone}
+            onChange={(e) => update("phone", e.target.value)}
+            required
+          />
+          <button
+            type="submit"
+            className="h-14 w-full rounded-xl bg-emerald-600 text-lg font-semibold text-white transition-colors hover:bg-emerald-700"
+          >
+            Register
+          </button>
+        </form>
+      </div>
+    </section>
+  );
+}
+  
